@@ -8,4 +8,5 @@ df <- read.csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_us
 source('scripts/buildMap.R')
 
 # Use your BuildMap function to draw a map of the data
-BuildMap(df)
+BuildMap(df, title="Quantile Map of US")
+

@@ -6,7 +6,7 @@ library(plotly)
 # BuildMap function: fill this in with a function that returns a map:
 # Try parameterize a few options, such as the title
 # I suggest: https://plot.ly/r/bubble-maps/
-BuildMap <- function(data) {
+BuildMap <- function(data, title="Default Title") {
   df$q <- with(df, cut(pop, quantile(pop)))
   levels(df$q) <- paste(c("1st", "2nd", "3rd", "4th", "5th"), "Quantile")
   df$q <- as.ordered(df$q)
@@ -27,6 +27,6 @@ BuildMap <- function(data) {
       x = ~lon, y = ~lat, size = ~pop, color = ~q, hoverinfo = "text",
       text = ~paste(df$name, "<br />", df$pop/1e6, " million")
     ) %>%
-    layout(title = '2014 US city populations<br>(Click legend to toggle)', geo = g)
+    layout(title = paste(title, '<br>(Click legend to toggle)'), geo = g)
   return (p)
 }
